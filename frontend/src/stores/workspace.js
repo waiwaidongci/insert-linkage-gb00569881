@@ -18,5 +18,13 @@ export const workspace = {
   deliveries: () => call('/deliveries'),
   schedule: data => call('/schedules', data),
   disable: id => call(`/schedules/${id}/disable`, {}),
+  recallSignoffs: () => call('/recall/signoffs'),
+  recallSignoff: data => call('/recall/signoffs', data),
+  recallEvents: () => call('/recall/events'),
+  recallRecord: data => call('/recall/events', data),
+  recallVoid: (id, data) => call(`/recall/events/${id}/void`, data),
+  recallVersions: () => call('/recall/versions'),
+  recallVersion: number => call(`/recall/versions/${number}`),
+  recallDelivery: batch => call(`/recall/delivery?batch_no=${encodeURIComponent(batch)}`),
   download: (path, filename) => saveFile(path, session.token, filename),
 };
